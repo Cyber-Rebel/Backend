@@ -5,7 +5,9 @@ const http = require('http') // file ko  reauire ab file ke method use kar sakte
 // }
 // es code ko run karne ke liye aapko temp() call karna padega ese ke http ko use karn cerateServer ko call karna padga 
 // server crate ho gaya hae 
-const server=http.createServer((req,res)=>{
+// const server= http.createServer() ese line par server create huva hae 
+
+const server=http.createServer((req,res)=>{  // es line par hamme ek SERVER KO PROGRAM KIYA HAE KI USE KYA KARN HAE 
     res.end('hellp world server')
 }) 
 // server ko program kar diya hae 
