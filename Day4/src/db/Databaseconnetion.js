@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 // mongoose kya kar databse le mongodb database sobot connetion karch kam kart 
 //server se database se kese connect hoga ye tun db.js(Databaseconnection.js) file me   likhoge 
-// part-1
+// part- then and catch  .. you can user here asyan await if you want
 function connectToDB(){
      mongoose.connect(Mongodb_URl_placehere).then(()=>{
           console.log('Database Connected')
@@ -21,7 +21,7 @@ function connectToDB(){
      }
 }
 
-module.exports =connectToDB
+module.exports =connectToDB;
 
 // await me succes ka part then handle karta hae and then and cathch ek function mangte hae 
 // exporte try cathch then,cathch
