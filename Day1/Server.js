@@ -10,9 +10,10 @@ const http = require('http') // file ko  reauire ab file ke method use kar sakte
 const server=http.createServer((req,res)=>{  // es line par hamme ek SERVER KO PROGRAM KIYA HAE KI USE KYA KARN HAE 
     res.end('hellp world server')
 }) 
+// RES.END 
 // server ko program kar diya hae 
 server.listen(3000,()=>{
-    console.log("server is runnig on port 3000")
+    console.log("server is runnig on port 3000") 
 })
 
 

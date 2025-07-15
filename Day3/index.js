@@ -41,3 +41,5 @@ app.delete('/notes/:id',(req,res)=>{
 //     res.status(200).json('Good')
 // })
 app.listen(3000)
+
+// obje me ek fecute wo nahe valu va
