@@ -29,7 +29,7 @@ app.post('/notes',(req,res)=>{
 })
 app.get('/notes',async(req,res)=>{
 
-    const data =  await NoteModel.find()
+    const data =  await NoteModel.find()  // agar esa kiya to sare ko return karnea but agar apne find({__id:id}) on base condition find hoge sirf
     console.log(data)
     console.log(data)
     res.json({

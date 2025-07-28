@@ -13,7 +13,10 @@
 
 
 
-
+# ab Mongoose package ne Thin kam kiye 
+-- First server ko Database se conneted --> mongoose.connect()
+-- Second Mongoose Schema Creata kiya -->new mongoose.Schema({})
+-- Third Models se help data CRUD opertion me method  
 
 
 
