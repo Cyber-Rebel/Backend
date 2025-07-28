@@ -13,9 +13,9 @@ app.get('/',(req,res)=>{ // server program kiya start kiya
     res.send('Hello world' )
 })
 
-app.post('/notes',(req,res)=>{
+app.post('/notes',async(req,res)=>{
     const {tittle,content} = req.body;
-    NoteModel.create({
+  await  NoteModel.create({
         tittle:tittle,
         content:content  // content first from models content second from users
     })
