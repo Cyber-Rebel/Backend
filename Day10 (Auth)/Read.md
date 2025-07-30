@@ -31,7 +31,7 @@ Tokens are essential in modern web applications for secure and efficient authent
 
 ---
 
-### ✅ 4. Perfect for API-based Apps
+### ✅ 4. Perfect for API-based App
 - Tokens are ideal for **SPA (Single Page Applications)** and **mobile apps** where frontend and backend are separate.
 
 ---
