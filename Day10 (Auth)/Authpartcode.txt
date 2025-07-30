@@ -1,0 +1,56 @@
+Part - 1 code 
+router.post('/register',async(req,res)=>{
+    const {email,password} = req.body;
+
+    const exituserindatase= await UserModels.findOne({ // agar database me nahi huva to null pass hoga jo ek falsy value hoti hae 
+        email:email
+    })
+
+    
+    if(exituserindatase){ // agar ese falsy value hugi agar database user nahi to exituserindatse ka answer hoga null jo ek falsy value to if nahi cahelga 
+        return res.json({
+            message:"this user aleredya exit"
+        })
+    }
+
+
+
+ const response   = await   UserModels.create({
+        email:email,
+        password:password,
+    })
+ res.json({
+    res:response
+ })
+
+
+    
+})
+
+router.post('/login', async (req,res)=>{
+        const {email,password} = req.body;
+          const kyauserdatabseavaiblehae= await UserModels.findOne({ // agar database me nahi huva to null pass hoga jo ek falsy value hoti hae 
+        email:email
+    })
+    if(!kyauserdatabseavaiblehae){ // if(!null ) ek true value hogi agar use hovya
+        return res.json({
+            message:"This user is not abviable in database"
+        })
+    }
+     console.log(kyauserdatabseavaiblehae)
+     const cheak = kyauserdatabseavaiblehae.password === password;
+      
+     if(cheak){
+        res.json({
+            message:"user are login",
+            kyauserdatabseavaiblehae
+        })
+     }else{
+        return res.json({
+            message:"pasword is not coreectd"
+        })
+     }
+
+
+        // res.send("HELLO")
+})

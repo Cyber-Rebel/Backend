@@ -4,7 +4,7 @@ const multer= require('multer')
 const uploadfile = require('../services/storge.services.js')
 const  songsModels = require('../models/Song.models.js')
 const router = express.Router() // use aap routes create karto hae in diffrent folder express ki rotutes hot hae app.use('',file path)// code ki readable hota hae ese// expres provide karta hae hamesadhan rakha
-
+// temp ram storge karke and use cloud par save kar de
 const upload = multer({storage:multer.memoryStorage( )})// multer ko bata ki file ko kaha stroge karna hae
 // memoryStorage ka matalab tempary data ko RAM me save karan hae  
 // ek or hota hae diskStorge 
