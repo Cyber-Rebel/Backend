@@ -6,8 +6,9 @@ app.get('/',(req,res)=>{
     res.send('Welocome to home page  ') // :-->
 })
 app.get('/about',(req,res)=>{
-    res.send('Welcome to about page ')  // :--> server ko esa program kar diya ki jab server /about jarga to use ye show hota line 5 se 10 tak hames server ko prgram kiya he 
+    res.send('Welcome to about page ')  // :--> server ko esa program kar diya ki jab server /about jarga to use ye 
 })
+// show hota line 5 se 10 tak hames server ko prgram kiya he 
 
 // What REQUEST ? (req)
 // :--> Client to server {client ne bola server ke meri kuch kam kar de me tuze mera data de rahah  hau}

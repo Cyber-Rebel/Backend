@@ -95,5 +95,7 @@ res.json({
 })
 
 module.exports = router;
+// ese code hame pata chalega ki konse user request kiya hae frontend se 
+
 // req.cookie() to set cookies
 // req.cookies() to extract data from cookie an object hota hae esa data destrucation nikal sakt hae 
