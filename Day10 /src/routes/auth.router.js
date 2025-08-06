@@ -77,7 +77,8 @@ router.get('/user',async(req,res)=>{
         })
     }
     try{
- let decode = jwt.verify(token ,"bookhavebrain") 
+ let decode = jwt.verify(token ,"bookhavebrain")  // jwt ko verity  karti hae and agar sahi hauvi to jo aapne data set kiya token me mo milga obj me
+ //  jwt verify se token pass karto and jwt securtiy ke pass akr
 
 const respon = await UserModels.findOne({
     _id:decode.id

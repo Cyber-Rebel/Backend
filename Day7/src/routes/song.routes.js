@@ -13,7 +13,7 @@ router.post('/songs',upload.single('audio'),async(req,res)=>{
     console.log(req.body) // agar aapne form-data use kiya jo aap by default text and file ko read nahi kar sakte 
 // aapne upload.single('__') esme __ filekey ko send karana hae ki naamse apne file ko send kiya hae 
 // ab jo text wala data hae use aap req.body me hoga 
-// and file(audio,video) ka data hame milta hae req.file me 
+// and file(audio,video) ka data hame milta hae req.file me aayega
     console.log(req.file.buffer)
     const fileData = await  uploadfile(req.file.buffer)
 console.log(fileData) // ese imagekit hame file ki link and 

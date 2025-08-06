@@ -1,0 +1,79 @@
+// What is Base64 in image 
+// ek image ko Sting me convert karna use karte hae Base64 (matlab ek image to dirctly sting me convert karna with  propert Structure)
+// google Serach image to base64 and search you understand image convet Stings
+// ai directly image nahi padta pahle image ko wo image convert Base64 me and then read karta hae 
+//
+
+
+const { GoogleGenAI } =require("@google/genai")
+
+// The client gets the API key from the environment variable `GEMINI_API_KEY`.
+const ai = new GoogleGenAI({  
+    apiKey:process.env.GEMINI_API_KEY// defalut me leta hae aage GEMINI_API_KEY  hae .env me 
+});
+async function generatecontext(base64ImageFile) {
+  const contents = [
+    {
+      inlineData: {
+        mimeType: "image/jpeg",
+      data: base64ImageFile, // file hae image jo hame milte pass karge Generatecontext me  base64Imagefile mee ke file denge
+    },
+  },
+  { text: "Caption this image." }, // its use for promtes
+];
+
+const response = await ai.models.generateContent({
+  model: "gemini-2.5-flash",
+  contents: contents,
+}) 
+console.log(response.text);}
+
+ module.exports={generatecontext}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// agar koi ai best karna laga to sirf ese code me change karna hoga sare code nahi
+// contents me kya karna hae and model name 
+
+
+
+
+//Basic one 
+
+// const { GoogleGenAI } =require("@google/genai")
+
+// The client gets the API key from the environment variable `GEMINI_API_KEY`.
+// const ai = new GoogleGenAI({
+//     apiKey:process.env.GEMINI_API_KEY
+// });
+
+// async function main() {
+//   const response = await ai.models.generateContent({
+//     model: "gemini-2.5-flash",
+//     contents: "Explain how AI works in a few words", 
+//   });
+//   console.log(response.text);
+// }
+
+// main();
+
+// agar koi ai best karna laga to sirf ese code me change karna hoga sare code nahi
+// contents me kya karna hae and model name 
