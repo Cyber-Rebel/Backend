@@ -13,6 +13,7 @@ const authVaildationMiddlware= async(req,res ,next)=>{
 })
 req.user =  user   // jo hamere req use me ek new property genrate ki hae 
 // req me user nam ek property ki jise req set hogi ki esa kyu kiya ek middlware to app.get('/name',producte,funcation handle(req,res){})  handler me wo req send kargo ese ek hame middlware ek data milga jise kam assan hoga 
+// access karne ke liye 
  next()
     }catch(err){
         res.json({message:"token is not vaild " , err})

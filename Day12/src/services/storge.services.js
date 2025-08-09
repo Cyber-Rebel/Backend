@@ -3,9 +3,9 @@ var mongoose = require('mongoose')
 
 
 var imagekit = new ImageKit({
-  publicKey: "public_NnKZPgePRWPpwL30DCmBHsEOdBs=",
-  privateKey: "private_2pOTHZR9uG+dCIMkTaHhibaXvZg=",
-  urlEndpoint: "https://ik.imagekit.io/cyberrebel"
+  publicKey: "",
+  privateKey: "", 
+  urlEndpoint: ""
 });
 
 function uploadfile(file){
@@ -13,15 +13,15 @@ function uploadfile(file){
 return new Promise((resolve, reject) =>{ 
      imagekit.upload({
       
-                file: file, 
+                file: file.buffer,// actual data of image that store in image 
                 fileName: new  mongoose.Types.ObjectId().toString(),
-                folder:"song-iamgekit" 
+                folder:"iamgekit" 
                 
                 
             
      },(error, result)=>{
         if(error){
-            reject(error);
+            reject(error.message);
         }else{
             resolve(result)
         }

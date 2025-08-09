@@ -6,7 +6,7 @@ const router = express.Router()
 const upload = multer({storage:multer.memoryStorage( )})
 
 
-router.post('/' , upload.single('image'),createpost)
+router.post('/' ,  authMiddlware,upload.single('image'),createpost)
 
 
 module.exports = router;
