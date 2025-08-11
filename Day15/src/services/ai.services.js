@@ -1,7 +1,7 @@
 const { GoogleGenAI } = require("@google/genai");
 
 const ai = new GoogleGenAI({
-    apiKey:''
+     apiKey:''
 });
 
 async function generateResponce(Chathistory) {

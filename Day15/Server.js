@@ -5,7 +5,11 @@ const { Server } = require("socket.io");
 const { generateResponce } = require('./src/services/ai.services.js');
  
 const httpServer = createServer(app);  // Create HTTP server using the Express app
-const io = new Server(httpServer, { /* options */ });
+const io = new Server(httpServer, { 
+  cors:{
+    origin: "http://localhost:5173", // Set the origin of the frontend URL
+  }
+ }); // here set the origin of frontend url it nessary 
 
 const Chathistory = [
 ]
@@ -17,7 +21,8 @@ io.on("connection", (socket) => {
   })
 
 // Ai-Messager
-  socket.on('ai-message',async(promts)=>{ 
+  socket.on('ai-message',async (promts)=>{ 
+    console.log(promts)
 //  const response = await generateResponce(promts)
 Chathistory.push({
   role:"user",
