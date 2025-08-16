@@ -1,8 +1,9 @@
 const express = require('express')
 const app = express()
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json())// body->raw-> JSON data ko parse karne ke liye use hota hae
+app.use(express.urlencoded({ extended: true }))// x-www-form-urlencoded data ko parse karne ke liye use hota hae
+
 app.set('view engine', 'ejs') // ese aap ap Ejs engine set kar liya hae ese ek kam ki and aappko koi html file load karni hae brower par 
 // to wo routes me res.render('fileName') se kar sakta hae and only filename likhna hae path ko import nahi karna hae only file nam e
 // and views folder hamesaha src ke bahar create karna hae jisme aapki ejs file hogi root me views folder create karna 

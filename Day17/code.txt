@@ -1,0 +1,45 @@
+const app = require('./src/index')
+const { createServer } = require("http");
+const { Server } = require("socket.io");
+const httpServer = createServer(app);
+const io = new Server(httpServer, { /* options */ }); // opation ese frontend ki url dalni padti hae 
+let arr = 'hello bhaii from server '
+io.on("connection", (socket) => {
+    console.log('A user connnected ' ,socket.id)
+    
+    // let send = `The ${socket.id} ek user server hi bolta hae`
+    // socket.on('message',(data)=>{
+    //     console.log(data)
+    //     socket.emit('server-message',
+    //         send
+    //     )
+    //     io.emit('all-conneted','server sab hi bolt hae bhaii logo' )        
+    // })
+
+    socket.on('one-to-message',(message)=>{
+        // console.log(req) 
+        console.log(message)
+        if(socket.id===message.id){
+        }
+
+
+    })
+
+
+});
+
+
+httpServer.listen(4000,()=>{
+    console.log('server runinng on 4000')
+
+})
+
+
+/// my thero 
+// server code me socket.on for listern jo fronten emit kargea
+// server se emit karne liye use kare io.emit
+
+// emit ek event fir karna 
+// on --> matlab listern karna
+// io-> whole server user in server request pass
+// socket --> single user request pass

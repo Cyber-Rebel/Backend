@@ -60,4 +60,5 @@ httpServer.listen(3000,()=>{
 //   role:"model ",
 //   parts:[{text:"The PM of India in 2019 was Narendra Modi.  "}]
 // }
-// ]
+// ejs express se kam karya hae 
+// ] io matlab aal user socket a single user s

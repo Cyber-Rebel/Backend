@@ -7,7 +7,7 @@ const authVaildationMiddlware= async(req,res ,next)=>{
     }
     try{
     const decode = jwt.verify(token,process.env.JWT_SECRET) // if token is valid we get id otherwise get error so use try and cacth method  becuase hame nahi cahiye ki server log karab ho bin kam se 
-    console.log(decode)
+    console.log(decode) // use ek obj form do value hot hae 
  const user = await  userModels.findOne({
     _id:decode.id
 })
