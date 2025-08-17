@@ -11,6 +11,12 @@ const authVaildationMiddlware= async(req,res ,next)=>{
  const user = await  userModels.findOne({
     _id:decode.id
 })
+ 
+    if (!user) {
+      return res.status(401).json({ message: "User not found" });
+    }
+
+
 req.user =  user   // jo hamere req use me ek new property genrate ki hae 
 // req me user nam ek property ki jise req set hogi ki esa kyu kiya ek middlware to app.get('/name',producte,funcation handle(req,res){})  handler me wo req send kargo ese ek hame middlware ek data milga jise kam assan hoga 
 // access karne ke liye 

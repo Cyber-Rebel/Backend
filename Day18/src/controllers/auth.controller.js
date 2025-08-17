@@ -18,10 +18,15 @@ if(!isPasswordValid){
 
 const token = jwt.sign({id:UserAlerdyexits.id},process.env.JWT_SECRET)
 
-res.cookie('token',token)
+res.cookie('token',token)// set as on cookie
 res.status(200).json({
   message:"Sucessfully Login "
-  ,UserAlerdyexits
+  ,    user:{
+      email:UserAlerdyexits.email,
+      firstNameName:UserAlerdyexits.fullName.firstName,
+      id:UserAlerdyexits.id
+      
+    }
 })
 
 
@@ -59,7 +64,7 @@ const hashpassword  = await bcrypt.hash(password,10)
     message:"user create succesfully !",
     user:{
       email:user.email,
-      // firstNameName:user.fullName.firstName,
+      firstNameName:user.fullName.firstName,
       id:user.id
       
     }

@@ -4,6 +4,7 @@ const ai = new GoogleGenAI({
      apiKey:''
 });
 
+// socker.user=user ek propery create kran na socket me craxy
 async function generateResponce(Chathistory) {
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
