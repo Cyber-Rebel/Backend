@@ -9,7 +9,7 @@ app.use(express.json()) // ese kahte hae aaplication level millware hota hae
 
 
 app.use((req,res,next)=>{ // m-1 rotuerlevel middlware
-    console.log('This Milddware in between app and routes')
+    // console.log('This Milddware in between app and routes')
     next()
 })
 app.use('/',indexRouter) // routes

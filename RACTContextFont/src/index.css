@@ -1,0 +1,23 @@
+@import "tailwindcss";
+body{
+        background-color: rgb(14, 13, 13);
+        color: aliceblue;
+    }
+/* ese systanx sue karo  */
+@font-face {
+    font-family: font1;
+    src: url(../public/fonts/Lausanne-300.woff2);
+}
+@font-face {
+    font-family: font2;
+    src: url(../public/fonts/Lausanne-500.woff2);
+}
+/* @font-face to dirclty index.css file me rakho dirctly */
+/* First Download Font the Public folder ek andar fonts namm ek folder ye anadar rak and  */
+/* Tailwidcss hae to kiho font-[font1] ese likho ja use karna hae  */
+/* Noramal css  */
+/* .hello{
+    font-family: "font1";
+} */
+
+/* Network Tab = Font = Downalods */
