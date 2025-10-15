@@ -1,6 +1,6 @@
 const UserModels = require('../Models/user.models.js')
 const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken'  )
 
 const LoginHandler = async(req,res)=>{
 const {email,password} = req.body;
@@ -23,9 +23,10 @@ res.status(200).json({
   message:"Sucessfully Login "
   ,    user:{
       email:UserAlerdyexits.email,
-      firstNameName:UserAlerdyexits.fullName.firstName,
+      firstName:UserAlerdyexits.fullName.firstName,
+      lastName:UserAlerdyexits.fullName.lastName,
       id:UserAlerdyexits.id,
-      token:token
+      avatarsUrl:UserAlerdyexits.avatarsUrl,
       
     }
 })
@@ -37,7 +38,7 @@ res.status(200).json({
 
 
 const SingupHandler = async(req,res)=>{
-const {fullName:{firstName,lastName},email,password} =req.body;
+const {fullName:{firstName,lastName},email,password,gender} =req.body;
 
 const UserAlerdyexits = await UserModels.findOne({
     email:email
@@ -48,14 +49,19 @@ if(UserAlerdyexits){
     )
 }
 
+
 const hashpassword  = await bcrypt.hash(password,10)
 
+const  avatarsUrl = `https://avatar.iran.liara.run/public/${gender==='male'?'boy':'girl'}?username=${firstName}`
+console.log(avatarsUrl)
   const user = await UserModels.create({
     email:email,
     password:hashpassword,
     fullName:{
         firstName,lastName
-    }
+    },
+    gender:gender,
+    avatarsUrl:avatarsUrl
   })
 
   const token = jwt.sign({id:user._id},process.env.JWT_SECRET)// jar object pass kela tar token madeh ek obje yeto kya madhe ek madhe apla data and secondt iat kuch hota hae 
@@ -65,8 +71,10 @@ const hashpassword  = await bcrypt.hash(password,10)
     message:"user create succesfully !",
     user:{
       email:user.email,
-      firstNameName:user.fullName.firstName,
-      id:user.id
+      firstName:user.fullName.firstName,
+      lastName:user.fullName.lastName,
+      id:user.id,
+      avatarsUrl:user.avatarsUrl,
       
     }
   })
@@ -74,7 +82,19 @@ const hashpassword  = await bcrypt.hash(password,10)
 }
 
 
-
+const authdata = async(req,res)=>{
+  res.status(200).json({
+    message:"user is auth",
+    user:{
+      email:req.user.email,
+      firstName:req.user.fullName.firstName,
+      lastName:req.user.fullName.lastName,
+      id:req.user.id,
+      avatarsUrl:req.user.avatarsUrl,
+      
+    }
+  })
+}
 
 
 
@@ -87,4 +107,5 @@ const hashpassword  = await bcrypt.hash(password,10)
 module.exports={
   SingupHandler,
     LoginHandler
+    ,authdata
 }

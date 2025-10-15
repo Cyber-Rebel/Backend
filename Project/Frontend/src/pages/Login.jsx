@@ -27,16 +27,7 @@ const Login = () => {
               email: form.email,
           password: form.password,
       }))
-      // const res = await axios.post(
-      //   "http://localhost:3000/api/auth/login",
-      //   {
-      //     email: form.email,
-      //     password: form.password,
-      //   },
-      //   { withCredentials: true }
-      // );
-
-      // console.log(res.data);
+  
       navigate("/");
     } catch (err) {
       console.error(err);

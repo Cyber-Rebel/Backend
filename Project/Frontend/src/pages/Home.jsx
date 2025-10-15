@@ -89,7 +89,7 @@ const Home = () => {
     const newMessages = [ ...messages, {
       type: 'user',
       content: trimmed
-    } ];
+    } ];  
 
     console.log("New messages:", newMessages);
 
@@ -97,7 +97,7 @@ const Home = () => {
     dispatch(setInput(''));
 
     socket.emit("ai-message", {
-      chat: activeChatId,
+      chat: activeChatId.toSting(),
       content: trimmed 
     })
 

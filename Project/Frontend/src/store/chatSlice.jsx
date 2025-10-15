@@ -73,7 +73,7 @@ const chatSlice = createSlice({
 export const {
     ensureInitialChat,
     startNewChat,
-    selectChat,
+    selectChat, 
     setInput,
     sendingStarted,
     sendingFinished,

@@ -172,3 +172,54 @@ generatevector(repsonces)
 };
 
 module.exports = socketserver;
+
+
+// PineconeBadRequestError: Metadata value must be a string, number, boolean or list of strings, got 'null' for field 'chat' 
+// answeer -> metlab metadat me value ek to string number boolean  ho sakti hae but chat filed me me metadata me null value mil raha hae  to mere messagepayload ko console kiya and
+// io-> all 
+// socket -> paricticular 
+// io - server se send kiya sare ko 
+
+// gemini file 
+const { GoogleGenAI } = require("@google/genai");
+
+// The client gets the API key from the environment variable `GEMINI_API_KEY`.
+// temperature  ki apka model kitna creative hoga 0-1 but create ke chakar me kabhi kabhi lagat answer deta hae
+const ai = new GoogleGenAI({});
+
+async function geminiresponce(content) {
+  try{
+  const response = await ai.models.generateContent({
+    model: "gemini-2.0-flash",
+    contents: content
+    
+  });
+   for await (const chunk of response) {
+    console.log(chunk.text);
+  }
+  return (response.text)}
+  catch(err){
+    console.log('Error when ai answer',err)
+  }
+}
+
+async function generatevector(content){
+  try{
+
+
+  const response = await ai.models.embedContent({
+        model: 'gemini-embedding-001',
+        contents: content,
+        config: { outputDimensionality: 768, }
+    });
+
+    // console.log ('Embedding response:',response.embeddings[0].values) //response.embeddings[0].values); generatrate text to vector 
+    return response.embeddings[ 0 ].values;
+  }
+    catch(err){
+      console.log("when converting text to vector accaurina error ", err)
+    }
+}
+
+
+module.exports={geminiresponce,generatevector}

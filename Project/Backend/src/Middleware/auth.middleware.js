@@ -33,7 +33,7 @@ const authUser = async (req, res, next) => {
       return res.status(401).json({ message: "Invalid token" });
     }
 
-    res.status(500).json({ message: "Internal Server Error" });
+    res.status(500).json({ message: "cheak Auth creditical" });
   }
 };
 

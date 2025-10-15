@@ -21,6 +21,16 @@ const userSchema = new mongoose.Schema({
     password:{
         type:String,
         
+    },
+    gender:{
+        type:String,
+        enum:['male','female'],
+        required:true
+
+    },
+    avatarsUrl:{
+        type:String,
+        required:true
     }
     
 },{
