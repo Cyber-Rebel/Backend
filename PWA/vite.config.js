@@ -24,10 +24,11 @@ export default defineConfig({
 // splash screen A splash screen  is introductory screen shown when application/website is launching.
 
 // icons  :- ye app ka icon hota hei jo app install karne ke baad mobile me show hota hei
-// ese icon ko appko generate karna hota hei  and array me pass karna hota hae genrate karne ke liye go to https://pwa-icon-generator.vercel.app/ 
+// ese icon ko appko generate karna hota hei  and array me pass karna hota hae genrate karne ke liye go to https://pwa-icon-ge  nerator.vercel.app/ 
 // Donload icons and menifest zip file hogi 
 // icons download hogi image ka set jisme multiple size ke icon honge multiple size ke screen ke liye 
  // icos ke folder ko copy karke apne project ke public folder me paste kar do
+ 
 icons: [
     {
       "src": "icons/rebel_icon-48x48.png",
@@ -105,4 +106,7 @@ icons: [
 
 
   })],
+  server:{
+    host:"0.0.0.0"
+  }
 })

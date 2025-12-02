@@ -1,34 +1,64 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [deferredPrompt, setDeferredPrompt] = useState(null)
+  const [installed, setInstalled] = useState(false)
+
+  useEffect(() => {
+    // Check already installed
+    const isStandalone =
+      window.matchMedia('(display-mode: standalone)').matches ||
+      window.navigator.standalone;
+
+    if (isStandalone) {
+      setInstalled(true);
+    }
+
+    // Event for install prompt showing
+    const handler = (e) => {
+      e.preventDefault()
+      setDeferredPrompt(e)
+    }
+    window.addEventListener('beforeinstallprompt', handler)
+
+    // Event fired when installation completes
+    window.addEventListener('appinstalled', () => {
+      console.log('App installed!')
+      setInstalled(true)
+      setDeferredPrompt(null)
+    })
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handler)
+    }
+  }, [])
+
+  const handleInstallClick = () => {
+    if (!deferredPrompt) return
+    deferredPrompt.prompt()
+
+    deferredPrompt.userChoice.then((result) => {
+      if (result.outcome === 'accepted') {
+        console.log("User installed the app")
+      }
+    })
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div className="App">
+      <h1>My PWA App</h1>
+
+      {!installed && deferredPrompt ? (
+        <button onClick={handleInstallClick}>
+          Download App
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      ):<div>installed cheakout</div>} 
+
+      {installed && (
+        <p style={{color: 'green', fontWeight: 'bold'}}>Install Complete ✓</p>
+      )}
+    </div>
   )
 }
 
