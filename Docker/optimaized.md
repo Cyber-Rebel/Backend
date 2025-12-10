@@ -24,3 +24,14 @@ COPY . .
 
 esa ham nahi kar sakte kyu ki empty directory me thodi npm i  empty directly packge log file nahi hota 
 to  ye to nahi chalega
+
+to optimzed way is 
+
+COPY ./package.json ./package.json
+COPY ./package-lock.json ./package-lock.json
+RUN npm install
+COPY . .
+
+firt copy json ko copy karo and agar use change huva ho to npm i CACHED hoga nahi to nahi hoga
+and age CACHED 
+matalb agar apne sourse code change bhi kiya to bar bar wo npm i nahi hoga that simple way to opatimed file 
