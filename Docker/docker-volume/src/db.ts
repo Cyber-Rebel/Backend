@@ -1,10 +1,6 @@
 import mongoose, { Schema, model } from 'mongoose';
-// localhost replace  the name of docker 
-// $ docker run -p 27018:27017 --name mongodbnetwork --network node_ts_app mongo
 
-const mongoUrl: string = 'mongodb://mongodbnetwork:27017/myDatabase'; //  docker mongodb in network  
-// const mongoUrl: string = 'mongodb://localhost:27017/myDatabase'; // Local development url 
-// then build the docker image and run the container in the same network
+const mongoUrl: string = 'mongodb://mongo:27017/myDatabase';
 
 // Connect to MongoDB
 mongoose.connect(mongoUrl)
