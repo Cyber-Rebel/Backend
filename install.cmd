@@ -1,3 +1,24 @@
+
+import React, { useState } from 'react'
+
+const InputExample = () => {
+  const [name, setName] = useState('')
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={name}              // 👈 input ki value
+        onChange={(e) => setName(e.target.value)} // 👈 update value
+        placeholder="Apna naam likho"
+      />
+
+      <p>Tumne likha: {name}</p>
+    </div>
+  )
+}
+
+export default InputExample
 npm install bcryptjs cookie-parser dotenv express jsonwebtoken mongoose socket.io ejs cors
 npm install @google/genai
 npm install -D nodemon
