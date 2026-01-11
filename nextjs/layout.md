@@ -1,0 +1,1 @@
+# in next js show must see the file of layout.tsx 
